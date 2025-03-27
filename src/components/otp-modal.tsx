@@ -1,24 +1,24 @@
+"use client";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { sendEmailOTP, verifySecret } from "@/lib/actions/user.actions";
+import { useRouter } from "next/navigation";
 
 interface OtpModalProps {
   email: string;
@@ -26,6 +26,8 @@ interface OtpModalProps {
 }
 
 const OtpModal = ({ email, accountId }: OtpModalProps) => {
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(true);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +35,15 @@ const OtpModal = ({ email, accountId }: OtpModalProps) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setIsOpen(true);
 
     try {
       //call API to verify otp
-    } catch (error) {
+      const sessionId = await verifySecret({ accountId, password });
+      if (sessionId) {
+        router.push("/");
+      }
+    } catch {
       console.log("Failed to verify OTP");
     }
 
@@ -45,6 +52,7 @@ const OtpModal = ({ email, accountId }: OtpModalProps) => {
 
   const handleResendOtp = async () => {
     //call api to resend otp
+    await sendEmailOTP({ email });
   };
 
   return (
@@ -75,12 +83,12 @@ const OtpModal = ({ email, accountId }: OtpModalProps) => {
           className="  "
         >
           <InputOTPGroup className="">
-            <InputOTPSlot index={0} className="size-16" />
-            <InputOTPSlot index={1} className="size-16" />
-            <InputOTPSlot index={2} className="size-16" />
-            <InputOTPSlot index={3} className="size-16" />
-            <InputOTPSlot index={4} className="size-16" />
-            <InputOTPSlot index={5} className="size-16" />
+            <InputOTPSlot index={0} className="shad-slot" />
+            <InputOTPSlot index={1} className="shad-slot" />
+            <InputOTPSlot index={2} className="shad-slot" />
+            <InputOTPSlot index={3} className="shad-slot" />
+            <InputOTPSlot index={4} className="shad-slot" />
+            <InputOTPSlot index={5} className="shad-slot" />
           </InputOTPGroup>
         </InputOTP>
 
