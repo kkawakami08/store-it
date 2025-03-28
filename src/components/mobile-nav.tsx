@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Separator } from "./ui/separator";
 import FileUploader from "./file-uploader";
 import { Button } from "./ui/button";
+import { signOutUser } from "@/lib/actions/user.actions";
 
 interface MobileNavProps {
   ownerId: string;
@@ -101,9 +102,11 @@ const MobileNav = ({
           <div className="flex flex-col justify-between gap-5 pb-5">
             <FileUploader />
             <Button
-              onClick={() => {}}
+              onClick={async () => {
+                await signOutUser();
+              }}
               type="submit"
-              className="h5 flex h-[52px] w-full items-center gap-4 rounded-full bg-cyan-700/10 px-6 text-cyan-900 shadow-none transition-all hover:bg-cyan-700/20"
+              className="h5 flex h-[52px] w-full items-center gap-4 rounded-full bg-cyan-700/10 px-6 text-cyan-900 shadow-none transition-all hover:bg-cyan-700/20 cursor-pointer"
             >
               <Image
                 src={"/assets/icons/logout.svg"}

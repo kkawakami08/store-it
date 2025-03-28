@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { createAccount } from "@/lib/actions/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OtpModal from "./otp-modal";
 
 type AuthFormProps = "sign-in" | "sign-up";
@@ -38,7 +38,7 @@ const AuthForm = ({ type }: { type: AuthFormProps }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [accountId, setAccountId] = useState(null);
-
+  const signIn = type === "sign-in";
   const formSchema = authFormSchema(type);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,7 +53,9 @@ const AuthForm = ({ type }: { type: AuthFormProps }) => {
     setIsLoading(true);
     setErrorMessage("");
     try {
-      const user = await createAccount({ fullName: fullName || "", email });
+      const user = !signIn
+        ? await createAccount({ fullName: fullName || "", email })
+        : await signInUser({ email });
       setAccountId(user.accountId);
     } catch {
       setErrorMessage("Failed to create an account, please try again");
@@ -61,8 +63,6 @@ const AuthForm = ({ type }: { type: AuthFormProps }) => {
       setIsLoading(false);
     }
   };
-
-  const signIn = type === "sign-in";
 
   return (
     <>
