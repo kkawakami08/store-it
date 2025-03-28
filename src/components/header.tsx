@@ -5,12 +5,17 @@ import Search from "./search";
 import FileUploader from "./file-uploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 
-const Header = () => {
+interface HeaderProps {
+  userId: string;
+  accountId: string;
+}
+
+const Header = ({ userId, accountId }: HeaderProps) => {
   return (
     <header className="hidden items-center justify-between gap-5 p-5 sm:flex lg:py-7 xl:gap-10">
       <Search />
       <div className=" flex-center min-w-fit gap-4">
-        <FileUploader />
+        <FileUploader ownerId={userId} accountId={accountId} />
         <form
           action={async () => {
             "use server";

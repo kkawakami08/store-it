@@ -19,7 +19,7 @@ import { Button } from "./ui/button";
 import { signOutUser } from "@/lib/actions/user.actions";
 
 interface MobileNavProps {
-  ownerId: string;
+  $id: string;
   accountId: string;
   fullName: string;
   avatar: string;
@@ -27,7 +27,7 @@ interface MobileNavProps {
 }
 
 const MobileNav = ({
-  ownerId,
+  $id: ownerId,
   accountId,
   fullName,
   avatar,
@@ -100,7 +100,7 @@ const MobileNav = ({
           </nav>
           <Separator className="my-5 bg-cyan-700/20" />
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader />
+            <FileUploader ownerId={ownerId} accountId={accountId} />
             <Button
               onClick={async () => {
                 await signOutUser();

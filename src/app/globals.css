@@ -185,6 +185,24 @@
   .shad-slot {
     @apply size-16 text-5xl bg-cyan-800 text-cyan-50 font-semibold;
   }
+  .uploader-button {
+    @apply h-[52px] gap-2 px-10 shadow-drop-1;
+  }
+  .uploader-preview-list {
+    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7 shadow-drop-3;
+  }
+  .uploader-preview-item {
+    @apply flex items-center justify-between  gap-3 rounded-xl p-3 shadow-drop-3;
+  }
+  .thumbnail {
+    @apply flex-center size-[50px] min-w-[50px] overflow-hidden rounded-full bg-cyan-700/10;
+  }
+  .thumbnail-image {
+    @apply object-cover object-center;
+  }
+  .preview-item-name {
+    @apply mb-2 line-clamp-1 max-w-[300px];
+  }
 }
 
 @layer utilities {
