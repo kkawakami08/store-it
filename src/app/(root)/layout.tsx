@@ -14,7 +14,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     <main className="flex h-screen">
       <Sidebar {...currentUser} />
       <section className="flex h-full flex-1 flex-col">
-        <MobileNav />
+        <MobileNav {...currentUser} />
         <Header />
         <div className="h-full flex-1 overflow-auto bg-cyan-700 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10">
           {children}
