@@ -245,6 +245,18 @@
   .file-details-value {
     @apply flex-1;
   }
+  .share-wrapper {
+    @apply !mt-2 space-y-2;
+  }
+  .share-input-field {
+    @apply h-[52px] w-full rounded-full border px-4;
+  }
+  .share-remove-user {
+    @apply rounded-full bg-transparent text-cyan-700 shadow-none hover:bg-transparent;
+  }
+  .remove-icon {
+    @apply aspect-square rounded-full;
+  }
 }
 
 @layer utilities {
