@@ -19,7 +19,7 @@ const Thumbnail = ({
   const isImage = type === "image" && extension !== "svg";
 
   return (
-    <figure className={cn("thumbnail", className)}>
+    <figure className={cn("thumbnail flex-center", className)}>
       <Image
         src={isImage ? url : getFileIcon(extension, type)}
         alt="thumbnail"
