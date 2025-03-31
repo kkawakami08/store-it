@@ -236,6 +236,15 @@
   .modal-submit-button {
     @apply !mx-0 h-[52px] w-full flex-1;
   }
+  .file-details-thumbnail {
+    @apply !mb-1 flex items-center gap-3 rounded-xl border border-cyan-200/40 bg-cyan-200/10 p-3;
+  }
+  .file-details-label {
+    @apply w-[30%] text-cyan-700;
+  }
+  .file-details-value {
+    @apply flex-1;
+  }
 }
 
 @layer utilities {
