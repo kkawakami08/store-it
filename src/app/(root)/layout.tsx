@@ -17,7 +17,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       <section className="flex h-full flex-1 flex-col">
         <MobileNav {...currentUser} />
         <Header userId={currentUser.$id} accountId={currentUser.accountId} />
-        <div className="h-full flex-1 overflow-auto bg-slate-50 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10">
+        <div className="h-full flex-1 overflow-auto bg-[#F2F4F8] px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10">
           {children}
         </div>
       </section>

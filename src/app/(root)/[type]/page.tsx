@@ -5,12 +5,7 @@ import { getFileTypesParams } from "@/lib/utils";
 import { Models } from "node-appwrite";
 import React from "react";
 
-const Page = async ({
-  searchParams,
-  params,
-}: {
-  params: Promise<{ type: string }>;
-}) => {
+const Page = async ({ searchParams, params }: SearchParamProps) => {
   const { type } = (await params) || "";
   const searchText = ((await searchParams)?.query as string) || "";
   const sort = ((await searchParams)?.sort as string) || "";

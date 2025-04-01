@@ -2,7 +2,7 @@ import { cn, formatDateTime } from "@/lib/utils";
 import React from "react";
 interface FormattedDateTimeProps {
   date: string;
-  className?: String;
+  className?: string;
 }
 
 const FormattedDateTime = ({ date, className }: FormattedDateTimeProps) => {
