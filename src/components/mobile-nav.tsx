@@ -35,14 +35,16 @@ const MobileNav = ({
   const pathname = usePathname();
 
   return (
-    <header className="flex h-[60px] justify-between px-5 sm:hidden">
-      <Image
-        src={"/assets/icons/logo-full-brand.svg"}
-        alt="logo"
-        width={120}
-        height={52}
-        className="h-auto"
-      />
+    <header className="flex h-[60px] items-center justify-between px-5 sm:hidden">
+      <Link href={"/"}>
+        <Image
+          src={"/assets/icons/logo-full-brand.svg"}
+          alt="logo"
+          width={120}
+          height={52}
+          className="h-auto"
+        />
+      </Link>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
           <Image
@@ -72,7 +74,12 @@ const MobileNav = ({
           <nav className="mobile-navh5 flex-1 gap-1 text-cyan-700">
             <ul className="flex flex-1 flex-col gap-4">
               {navItems.map(({ url, name, icon }) => (
-                <Link href={url} key={name} className="">
+                <Link
+                  href={url}
+                  key={name}
+                  className=""
+                  onClick={() => setOpen(false)}
+                >
                   <li
                     className={cn(
                       "flex text-cyan-900 gap-4 w-full justify-start items-center h5 px-6 h-[52px] rounded-full ",

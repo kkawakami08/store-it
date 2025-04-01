@@ -183,13 +183,13 @@
     @apply text-lg;
   }
   .shad-slot {
-    @apply size-16 text-5xl bg-cyan-800 text-cyan-50 font-semibold;
+    @apply size-12 md:size-16  text-5xl bg-cyan-800 text-cyan-50 font-semibold;
   }
   .uploader-button {
     @apply h-[52px] gap-2 px-10;
   }
   .uploader-preview-list {
-    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7;
+    @apply fixed bottom-10 right-0 md:right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7;
   }
   .uploader-preview-item {
     @apply flex items-center justify-between  gap-3 rounded-xl p-3;
@@ -297,10 +297,10 @@
     @apply h-full rounded-[20px] bg-white p-5 xl:p-8;
   }
   .recent-file-details {
-    @apply flex w-full flex-col xl:flex-row xl:justify-between;
+    @apply grid grid-cols-5 w-full;
   }
   .recent-file-name {
-    @apply line-clamp-1 w-full text-cyan-700 sm:max-w-[200px] lg:max-w-[250px];
+    @apply col-span-4 line-clamp-1 text-cyan-700  sm:max-w-[200px] lg:max-w-[250px];
   }
   .recent-file-date {
     @apply text-cyan-700/80;
