@@ -2,6 +2,7 @@
 import { Account, Avatars, Client, Databases, Storage } from "node-appwrite";
 import { appwriteConfig } from "./config";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const createSessionClient = async () => {
   //initializes instances and services like databases and accounts and makes sure they are connected to the same project
@@ -16,7 +17,11 @@ export const createSessionClient = async () => {
   const session = (await cookies()).get("appwrite-session");
 
   //user is not logged in
-  if (!session || !session.value) throw new Error("No session");
+  if (!session || !session.value) {
+    // throw new Error("No session");
+    console.error("No session available");
+    redirect("/sign-in");
+  }
 
   client.setSession(session.value);
 
